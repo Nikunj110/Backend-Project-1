@@ -6,14 +6,14 @@ const app = express();
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
-    Credential:true
+    Credential: true
 }));
 
-app.use(express.json({limit:"16kb"}));
+app.use(express.json({ limit: "16kb" }));
 // aa form aavse tyare handle karse
 app.use(express.urlencoded({
-    extended:true,
-    limit:"16kb"
+    extended: true,
+    limit: "16kb"
 }));
 // aa url mathi data aavse tyare handle karse
 app.use(express.static("public"));
@@ -23,5 +23,22 @@ app.use(express.static("public"));
 // cookie parser used for server->browser ni cookie access karva mate and for set 
 app.use(cookieParser());
 
+// routes import
 
-export {app}
+import userRouter from "./routes/user.routes.js";
+
+// routes declaration
+// app.use("/users",userRouter); 
+// here we are making url like http://localhost:8000/users/login
+// login user.routes file mathi add thase
+// but we use api so we make a 
+app.use("/api/v1/users",userRouter);
+// here we are making url like http://localhost:8000/api/v1/users/login
+// /api/v1/users aana par javathi userRouter activate thase means the file ma jsu
+
+
+
+
+
+
+export { app }
