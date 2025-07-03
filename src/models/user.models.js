@@ -61,7 +61,7 @@ userSchema.pre("save",async function (next){
     }
      this.password = await bcrypt.hash(this.password,10);
     next();
-    // nahitar 10 iteration ma pass ne encrypr kaese 
+    // nahitar 10 iteration ma pass ne encrypt kaese 
 });
 userSchema.methods.isPasswordCorrect = async function (password){
        return await bcrypt.compare(password,this.password);
@@ -86,7 +86,7 @@ userSchema.methods.generateAccessToken = function(){
     )
 }
 
-userSchema.methods.generatRefrshToken = function(){
+userSchema.methods.generatRefreshToken = function(){
     jwt.sign(
         {
             _id : this._id,
